@@ -16,6 +16,8 @@
     int count = 0;
     int c;
     int choice;
+    char module[4][50]={"Tech","Math","Pc","Svt"};
+    int cofficient [4]= {2,6,4,4};
 
 void ajouterEtudiant(){
     if (count >=30)
@@ -59,7 +61,7 @@ void sasirNotes(){
         do
         {
 
-        printf("Note %d =",i+1);
+        printf("Note de %s =",module[i]);
         scanf("%f",&etudiant[c-1].notes[i]);
 
         if (etudiant[c-1].notes[i]<0 || etudiant[c-1].notes[i]>20)
@@ -82,7 +84,7 @@ void calculerMoyenneEtudiant(){
     
     for (int i = 0; i < 4; i++)
     {
-        etudiant[n].moyenne = etudiant[n].moyenne + etudiant[n].notes[i] /4; 
+        etudiant[n].moyenne = etudiant[n].moyenne + ((etudiant[n].notes[i]*cofficient[i]) /16); 
     }
 
 }
@@ -92,7 +94,7 @@ void afficherEtudiants(){
     for (int i = 0; i < count; i++)
     {
         printf("etudiant %d :\n",i+1);
-        printf("%s | %s | %s | [%.2f , %.2f , %.2f , %.2f] | %.2f \n",etudiant[i].ID ,etudiant[i].nom ,etudiant[i].prenom , etudiant[i].notes[0], etudiant[i].notes[1],etudiant[i].notes[2], etudiant[i].notes[3], etudiant[i].moyenne);
+        printf("%s | %s | %s | [%s = %.2f | %s = %.2f | %s = %.2f |%s = %.2f] | %.2f \n",etudiant[i].ID ,etudiant[i].nom ,etudiant[i].prenom ,module[0], etudiant[i].notes[0],module[1], etudiant[i].notes[1],module[2],etudiant[i].notes[2], module[3], etudiant[i].notes[3], etudiant[i].moyenne);
     }
     
 
@@ -115,7 +117,7 @@ void afficherBulletin(){
     int nu = nombre -1;
     
         printf("etudiant %d :\n",nombre);
-        printf("%s | %s | %s | [%.2f , %.2f , %.2f , %.2f] | %.2f \n",etudiant[nu].ID ,etudiant[nu].nom ,etudiant[nu].prenom , etudiant[nu].notes[0], etudiant[nu].notes[1],etudiant[nu].notes[2], etudiant[nu].notes[3], etudiant[nu].moyenne);
+        printf("%s | %s | %s | [%s = %.2f | %s = %.2f |%s = %.2f |%s = %.2f] | %.2f \n",etudiant[nu].ID ,etudiant[nu].nom ,etudiant[nu].prenom ,module[0], etudiant[nu].notes[0],module[1], etudiant[nu].notes[1],module[2],etudiant[nu].notes[2], module[3], etudiant[nu].moyenne);
     }
     } while (nombre>count || nombre <=0);
     
@@ -153,8 +155,14 @@ void searchByName(){
     {
         int j= found[i];
         printf("etudiant %d :\n",j+1);
-        printf("%s | %s | %s | [%.2f , %.2f , %.2f , %.2f] | %.2f \n",etudiant[j].ID ,etudiant[j].nom ,etudiant[j].prenom , etudiant[j].notes[0], etudiant[j].notes[1],etudiant[j].notes[2], etudiant[j].notes[3], etudiant[j].moyenne);
+        printf("%s | %s | %s | [%s = %.2f | %s = %.2f | %s = %.2f |%s = %.2f] | %.2f \n",etudiant[j].ID ,etudiant[j].nom ,etudiant[j].prenom ,module[0], etudiant[j].notes[0],module[1], etudiant[j].notes[1],module[2],etudiant[j].notes[2], module[3], etudiant[j].notes[3], etudiant[i].moyenne);
     }
+
+    if (index==0)
+    {
+        printf("pas disponible.");
+    }
+    
     
 }
 
@@ -205,6 +213,21 @@ void sortByMoyenne(){
     }
     
     
+}
+
+
+void admis(){
+    
+    printf("Les etudiants admis : \n");
+    for (int i = 0; i < count; i++)
+    {
+        if (etudiant[i].moyenne >=10)
+        {
+            printf("etudiant %d :\n",i+1);
+        printf("%s | %s | %s | [%.2f , %.2f , %.2f , %.2f] | %.2f \n",etudiant[i].ID ,etudiant[i].nom ,etudiant[i].prenom , etudiant[i].notes[0], etudiant[i].notes[1],etudiant[i].notes[2], etudiant[i].notes[3], etudiant[i].moyenne);
+        }
+        
+    }
 }
 
 void sortByNom(){

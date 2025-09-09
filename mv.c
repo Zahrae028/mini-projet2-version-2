@@ -16,9 +16,11 @@ int main(){
             printf("4) Afficher bulletin d'un etudiant\n");
             printf("5) Calculer la moyenne genrale\n");
             printf("6) Recherchez par nom/prenom\n");
-            printf("7) sort by moyenne");
-            printf("8) sort by nom");
+            printf("7) sort by moyenne\n");
+            printf("8) sort by nom\n");
+            printf("9) Afficher les etudiants qu'ils sont admis\n");
             printf("0) Quitter\n");
+            
             printf("le choix : ");
             scanf("%d",&option);
 
@@ -64,6 +66,11 @@ int main(){
             case 8:
                 sortByNom();
                 afficherEtudiants();
+                break;
+
+            case 9: 
+                admis();
+                break;
 
             default:
                 break;
